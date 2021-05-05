@@ -1,0 +1,65 @@
+:root {
+    --ccc-item-bkg: rgb(200,200,200);
+    --ccc-grid-space: 1rem;
+    --ccc-grid-default-size: calc( 25% - 3 * var(--ccc-grid-space) );
+	--ccc-grid-large-size: calc( 33% - 3 * var(--ccc-grid-space) );
+	--ccc-grid-mid-size: calc( 50% - 3 * var(--ccc-grid-space) );
+	--ccc-grid-small-size: calc( 100% - 2 * var(--ccc-grid-space) );
+}
+.cc-activites-wrapper {
+	margin: auto;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: stretch;
+}
+.cc-activites-list {
+	flex: 0 0 auto;
+	width: 100%;
+	margin: auto;
+	margin-top: 3rem;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+.cc-activites-item {
+	margin-bottom: var(--ccc-grid-space);
+	margin-right: var(--ccc-grid-space);;
+	padding: 1rem;
+	height: 12rem;
+	background-color: var(--ccc-item-bkg);
+}
+.cc-activites-item:first-child {
+	background-color: var(--cc-red);
+}
+
+/* Responsive rules */
+@media (max-width: 480px) {
+	.cc-activites-item {
+		min-width: var(--ccc-grid-small-size);
+		max-width: var(--ccc-grid-small-size);
+		flex: 1 1 var(--ccc-grid-small-size);
+	}
+}
+@media (min-width: 481px) and (max-width: 768px) {
+	.cc-activites-item {
+		min-width: var(--ccc-grid-mid-size);
+		max-width: var(--ccc-grid-mid-size);
+		flex: 1 1 var(--ccc-grid-mid-size);
+	}
+}
+@media (min-width: 769px) and (max-width: 1023px) {
+	.cc-activites-item {
+		min-width: var(--ccc-grid-large-size);
+		max-width: var(--ccc-grid-large-size);
+		flex: 1 1 var(--ccc-grid-large-size);
+	}
+}
+@media (min-width: 1024px) {
+	.cc-activites-item {
+		min-width: var(--ccc-grid-default-size);
+		max-width: var(--ccc-grid-default-size);
+		flex: 1 1 var(--ccc-grid-default-size);
+	}
+}

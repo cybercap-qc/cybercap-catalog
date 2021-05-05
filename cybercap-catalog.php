@@ -1,35 +1,40 @@
 <?php
 /**
  * Plugin Name: Cybercap Catalog
- * Plugin URI: https://cybercap.qc.ca
- * Description: Creates a catalog of activities, split into different curriculums
- * Version: 0.0.1
- * Author: Alix Jasmin-Morissette for Cybercap
+ * Description: Un catalogue d'activités pour Cybercap
+ * Version: Zéro
+ * Author: Alix Jasmin-Morissette
  * License: GPLv2
- * Text Domain: cc-catalogu
- * Domain Path: /languages/
+ * Text Domain: cc-cat
  */
+
+namespace cc\catalog;
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-// Constants
-define( 'CYBERCAP_CATALOG_DIR', plugin_dir_path(__FILE__) ) ;
+/**
+ * Handles the activation and deactivation of the plugin
+ */
 
-// Classes
-require_once( dirname(__FILE__) . '/classes/cybercap-catalog-initialiser.php'); // activation, deactivation, uninstall
+// Required files
+require_once('includes/cybercap-catalog-cpt.php');
+require_once('includes/cybercap-catalog-taxonomy.php');
+require_once('includes/cybercap-catalog-template.php');
 
+// Registration, unregistration and uninstall hooks and functions
+function activate() {
+}
 
-// Activation, deactivation, removal
-register_activation_hook( __FILE__, array('CC_Catalog_Initialiser', 'init') );
-add_action('admin_menu', function() {
-    require_once( dirname(__FILE__) . '/classes/cybercap-catalog-admin.php' );
-    $catalog_admin = new CC_Catalog_Admin();
-    $catalog_admin->add_menu_page_catalog();
-});
-/*
-register_deactivation_hook( __FILE__, array() );
-register_uninstall_hook( __FILE__, array('class.cc-catalog', 'destroy') );
-*/
+function deactivate() {
+}
+
+function uninstall() {
+
+}
+
+register_activation_hook( __FILE__, __NAMESPACE__ . '\activate' );
+register_deactivation_hook( __FILE__, __NAMESPACE__ . '\deactivate' );
+register_uninstall_hook( __FILE__, __NAMESPACE__ . '\uninstall' );
 ?>
